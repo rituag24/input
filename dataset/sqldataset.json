@@ -1,0 +1,33 @@
+{
+	"name": "sqldataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sqlschema": {
+				"type": "string",
+				"defaultValue": "dbo"
+			},
+			"sqltablename": {
+				"type": "string",
+				"defaultValue": "input"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().sqlschema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().sqltablename",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

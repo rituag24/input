@@ -64,7 +64,8 @@
 							"container": {
 								"value": "@pipeline().parameters.container",
 								"type": "Expression"
-							}
+							},
+							"filename": "department.csv.txt"
 						}
 					}
 				],

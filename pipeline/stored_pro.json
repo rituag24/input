@@ -1,0 +1,39 @@
+{
+	"name": "stored_pro",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[update_copy_status]",
+					"storedProcedureParameters": {
+						"status": {
+							"value": "abc",
+							"type": "String"
+						},
+						"filename": {
+							"value": "department.csv"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-06-06T07:38:24Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

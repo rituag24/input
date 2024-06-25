@@ -1,0 +1,17 @@
+{
+	"name": "lookupoldwatermark",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sinksql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "oldwatermark"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

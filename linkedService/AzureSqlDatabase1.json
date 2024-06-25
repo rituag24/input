@@ -5,8 +5,21 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=pcserver98.database.windows.net;initial catalog=portal98;user id=ritu",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDVCQkQ3MjE4LTg0RDctNEUyNy04QTdFLTE5N0E3QzhEQ0VDQV8xYjIyOWRjMi04OTk4LTQxMGMtODJmNi0xNGFhMzI2OWVjNTciDQp9"
+			"server": "pcserver982.database.windows.net",
+			"database": "portal982",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"hostNameInCertificate": "",
+			"authenticationType": "SQL",
+			"userName": "ritu",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "passwordsql"
+			}
 		}
 	}
 }

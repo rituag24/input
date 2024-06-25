@@ -1,0 +1,179 @@
+{
+	"name": "METADATA_FOREACH_VARIABLE",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "Dataset_source",
+									"type": "DatasetReference",
+									"parameters": {
+										"sourcecontainer": {
+											"value": "@item().Inputcontainer",
+											"type": "Expression"
+										},
+										"sourcedirectory": {
+											"value": "@item().Inputdirectory",
+											"type": "Expression"
+										},
+										"sourcefilename": {
+											"value": "@item().Inputfile",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "datasource_sink",
+									"type": "DatasetReference",
+									"parameters": {
+										"sinkcontainer": {
+											"value": "@item().Outputcontainer",
+											"type": "Expression"
+										},
+										"sinkdiretory": {
+											"value": "@item().Outputdirectory",
+											"type": "Expression"
+										},
+										"sinkfilename": {
+											"value": "@item().Outputfile",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "gem_data",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"variables": {
+			"metadata4": {
+				"type": "Array",
+				"defaultValue": [
+					{
+						"Inputfile": "Employee.csv",
+						"Inputcontainer": "input",
+						"Inputdirectory": "SUBFOLDER",
+						"Outputfile": "Employee.csv",
+						"Outputcontainer": "folderforeach",
+						"Outputdirectory": "subfolderforeach"
+					},
+					{
+						"Inputfile": "Department.csv",
+						"Inputcontainer": "input",
+						"Inputdirectory": "subfolder2",
+						"Outputfile": "Department.csv",
+						"Outputcontainer": "folderforeach",
+						"Outputdirectory": "subfolderforeach1"
+					},
+					{
+						"Inputfile": "Sample_data.csv",
+						"Inputcontainer": "input",
+						"Inputdirectory": "subfolder3",
+						"Outputfile": "Sample_data.csv",
+						"Outputcontainer": "folderforeach",
+						"Outputdirectory": "subfolderforeach2"
+					}
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-06-01T14:43:42Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

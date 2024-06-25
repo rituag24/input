@@ -1,0 +1,9 @@
+{
+	"name": "datafac246",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "47ea51d4-e19a-4dee-8bd6-b3dec94aa6a4",
+		"tenantId": "e26cdf97-cdf0-4bbc-91d0-db03b8362771"
+	}
+}

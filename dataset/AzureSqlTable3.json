@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "sales"
+			"table": "deltametadata"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

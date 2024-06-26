@@ -175,7 +175,7 @@
 								"storedProcedureParameters": {
 									"newwatermark": {
 										"value": {
-											"value": "@activity('Lookup2').output.firstRow",
+											"value": "@activity('Lookup2').output.firstRow.newwatermark",
 											"type": "Expression"
 										},
 										"type": "Datetime"
